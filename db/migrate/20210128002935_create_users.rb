@@ -3,9 +3,10 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       t.string :name
       t.string :email
+      t.string :password, null: false, default: 'abc123'
+      t.string :role, null: false, default: 'user'
       t.binary :icon
-
-      t.timestamps
+      t.datetime :created, null: false, default: -> { 'NOW()' }
     end
     add_index :users, :name, unique: true
     add_index :users, :email, unique: true

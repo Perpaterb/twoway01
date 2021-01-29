@@ -10,9 +10,10 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :winner
       t.text :tags
       t.binary :image
-
-      t.timestamps
+      t.datetime :created, null: false, default: -> { 'NOW()' }
+      
     end
     add_index :products, :name
   end
 end
+

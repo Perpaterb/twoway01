@@ -1,0 +1,25 @@
+<main id="pages-register">
+    <h1> New User Registration</h1>
+    <form action="<%=user_create_path%>" method="POST">
+    <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token" />
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="user[name]" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="text" name="user[email]" />
+        </div>
+        <input type="submit" value="Register">
+    </form>
+
+
+    <div calss="page_links">
+        <ul>
+            <li><%= link_to "Home", index_path%></li>
+            <li><%= link_to "Login", login_path%></li>
+            <li><%= link_to "Register", register_path%></li>
+            <li><%= link_to "Admin", admin_path%></li>
+        </ul>
+    </div>
+</main>
