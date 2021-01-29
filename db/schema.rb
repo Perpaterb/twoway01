@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_002952) do
     t.string "winner"
     t.text "tags"
     t.binary "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created", default: -> { "now()" }, null: false
     t.index ["name"], name: "index_products_on_name"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -34,9 +33,10 @@ ActiveRecord::Schema.define(version: 2021_01_28_002952) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "password", default: "abc123", null: false
+    t.string "role", default: "user", null: false
     t.binary "icon"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created", default: -> { "now()" }, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
   end

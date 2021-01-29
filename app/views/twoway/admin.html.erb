@@ -1,0 +1,26 @@
+<main id="pages-admin">
+
+    <h1>Admin page</h1>
+    <section class="user-list">
+    <%@users.each do |user|%>
+        <div class="card <%=user[:role]%>">
+            <h5>Name: <%=user[:name]%></h5>
+            <h5>Email: <%=user[:email]%></h5>
+            <h5>Role: <%=user[:role]%></h5>
+            <%= link_to "Delete", delete_user_path(user[:id])%>
+        </div>
+        <%end%>
+        
+    </section>
+
+
+
+    <div calss="page_links">
+        <ul>
+            <li><%= link_to "Home", index_path%></li>
+            <li><%= link_to "Login", login_path%></li>
+            <li><%= link_to "Register", register_path%></li>
+            <li><%= link_to "Admin", admin_path%></li>
+        </ul>
+    </div>
+</main>
